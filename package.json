@@ -1,0 +1,25 @@
+{
+  "name": "evenly-configs",
+  "version": "0.0.1",
+  "description": "module for config parsing, chunk mapping, and other setup in Evenly",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/infwonder/evenly-configs.git"
+  },
+  "keywords": [
+    "evenly"
+  ],
+  "author": "Jason Lin",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/infwonder/evenly-configs/issues"
+  },
+  "dependencies": {
+    "xrange": "^1.0.1",
+    "evenly-utils": "0.0.1"
+  }
+}
