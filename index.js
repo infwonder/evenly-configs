@@ -38,10 +38,13 @@ var evenly_configs =
   topdir: os.tmpdir(),
   chunkdir: undefined,
   outdir: undefined,
+  cfgid: undefined,
 
   load_config: function()
   {
-    module.exports.configs = JSON.parse(fs.readFileSync(module.exports.cfgpath)); // synchronous operation... but it has to be this way anyway. 
+    var configs = fs.readFileSync(module.exports.cfgpath); // synchronous operation... but it has to be this way anyway. 
+    module.exports.configs = JSON.parse(configs);
+    module.exports.cfgid = C.createHash('sha256').update(configs).digest('hex');
     module.exports.hostlist = Object.keys(module.exports.configs.members);
 
     var level = module.exports.configs.ringsize;
