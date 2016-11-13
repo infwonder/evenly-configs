@@ -25,7 +25,7 @@ const xrange = require('xrange');
 
 // Currently, Evenly is only planned to run on Linux platform.
 
-module.exports = 
+var evenly_configs = 
 {
   hostname: os.hostname(),
   cfgdir: os.homedir(),
@@ -35,6 +35,9 @@ module.exports =
   hashs: undefined,
   chunked_hashs: undefined,
   nodeparts: {},
+  topdir: os.tmpdir(),
+  chunkdir: undefined,
+  outdir: undefined,
 
   load_config: function()
   {
@@ -42,6 +45,10 @@ module.exports =
     module.exports.hostlist = Object.keys(module.exports.configs.members);
 
     var level = module.exports.configs.ringsize;
+
+    module.exports.topdir = module.exports.configs.topdir || os.tmpdir();
+    module.exports.chunkdir = module.exports.topdir + '/pbdump';
+    module.exports.outdir = module.exports.topdir + '/output';
 
     module.exports.hashs = utils.bucketmap(level);
     var bucketids = Object.keys(module.exports.hashs).map( (k) => {return module.exports.hashs[k]} )
@@ -61,3 +68,7 @@ module.exports =
     });
   }
 };
+
+Object.defineProperty( evenly_configs, 'isa', {value: 'evenly-configs', writable: false});
+
+module.exports = evenly_configs;
