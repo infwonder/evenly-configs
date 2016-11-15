@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "xrange": "^1.0.1",
+    "mkdirp": "^0.5.1",
     "evenly-utils": "0.0.1"
   }
 }
