@@ -52,9 +52,9 @@ var evenly_configs =
     var level = module.exports.configs.ringsize;
 
     module.exports.topdir = module.exports.configs.topdir || os.tmpdir(); mkdirp.sync(module.exports.topdir);
-    module.exports.chunkdir = module.exports.topdir + '/dumps';           mkdirp.sync(module.exports.chunkdir);
-    module.exports.metadir = module.exports.topdir + '/meta';             mkdirp.sync(module.exports.metadir);
-    module.exports.outdir = module.exports.topdir + '/files';             mkdirp.sync(module.exports.outdir);
+    module.exports.chunkdir = module.exports.topdir + '/dumps'; mkdirp.sync(module.exports.chunkdir + '/data'); mkdirp.sync(module.exports.chunkdir + '/head');
+    module.exports.metadir = module.exports.topdir + '/meta'; mkdirp.sync(module.exports.metadir);
+    module.exports.outdir = module.exports.topdir + '/files'; mkdirp.sync(module.exports.outdir);
 
     module.exports.hashs = utils.bucketmap(level);
     var bucketids = Object.keys(module.exports.hashs).map( (k) => {return module.exports.hashs[k]} )
